@@ -8,15 +8,15 @@ export default class Reproductoview extends Component {
   componentDidMount () {
       Orientation.getOrientation((err, orientation) =>  {
         if (err) console.warn('error', err)
-        console.warn(orientation)
         // Orientation.lockToLandscape()
       })
   }
-
   componentWillUnmount() {
     Orientation.lockToPortrait()
   }
   render () {
-    return  <VideoPlayer  capitulo = {this.props.capitulo}/>
+    return  (
+      <VideoPlayer capitulo = {this.props.capitulo} anime = {this.props.anime} />
+      )
   }
 }

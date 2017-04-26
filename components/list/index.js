@@ -19,14 +19,21 @@ export default class List extends Component{
   _onPressButton(anime) {
     Actions.Capitulos({anime})
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.list !== this.props.list) {
+      this.setState({ dataSource: this.state.dataSource.cloneWithRows(nextProps.list)})
+    }
+  }
   render() {
     return(
       <ListView
         style = {styles.main}
         dataSource = {this.state.dataSource}
+        enableEmptySections={true}
         renderRow = { data => (
           <TouchableHighlight onPress = { () =>  this._onPressButton(data) }>
-             <Card anime = {data.anime} thumbnail = {data.thumbnail} key = {data.key} author = {data.author} cantCapitulos = {data.cantCapitulos} />
+             <Card name = {data.name} thumbnail = {data.thumbnail} key = {data.id} author = {data.author} cantEpisodes = {data.cantEpisodes} />
           </TouchableHighlight>
         )}
       />

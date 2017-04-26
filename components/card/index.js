@@ -17,9 +17,8 @@ export default class Card extends Component {
           <Image source = {{uri: this.props.thumbnail}} style = {styles.image}/>
         </View>
         <View style = {styles.containerText}>
-          <Text style = {styles.textTitle}>{this.props.nombre}</Text>
-          <Text style = {styles.text}>Author: {this.props.author}</Text>
-          <Text style = {styles.text} >Capitulos: {this.props.cantCapitulos}</Text>
+          <Text style = {styles.textTitle}>{this.props.name}</Text>
+          <Text style = {styles.text} >Capitulos: {this.props.cantEpisodes}</Text>
         </View>
       </View>
     )
@@ -42,16 +41,21 @@ const styles = StyleSheet.create({
   containerText:{
     flex: 1,
     alignItems: "center",
-    paddingTop: 30,
+    paddingTop: 10,
+    justifyContent: 'center',
+
 
   },
   textTitle: {
-    fontSize: 30,
-    color: "#000"
-
+    fontSize: 20,
+    color: "#000",
+    'textAlign': 'center',
+    'textAlignVertical': 'center',
+    padding: 5,
+    paddingTop: 0,
   },
   text: {
-    fontSize: 18,
-    color: "#000"
+    fontSize: 15,
+    color: "#000",
   }
 })

@@ -17,7 +17,7 @@ export default class AnimeDetail extends Component {
       <View style = {styles.container}>
         <View style = {styles.containerImage}>
           <Image source = {{uri: anime.thumbnail}} style = {[styles.image]}>
-          <Text style = {styles.animeName}> hola mundo </Text>
+          <Text style = {styles.animeName}> {anime.name} </Text>
           </Image>
         </View>
       </View>
@@ -44,9 +44,9 @@ const styles = new StyleSheet.create({
   },
   animeName: {
     color: "white",
-    fontSize: 24,
+    fontSize: 20,
     position: "absolute",
-    bottom:20,
+    bottom:30,
     left: 0
   }
 })

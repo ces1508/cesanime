@@ -14,12 +14,13 @@ export default class DetailAnime extends Component {
     this.nrender = 0
   }
   _getData = async () => {
-    let capitulos = await Api.getCapitulos()
+    let capitulos = await Api.getCapitulos(this.props.anime.id)
     this.setState({
       capitulos: capitulos
     })
   }
-  componentWillMount() {
+
+  componentDidMount() {
     Orientation.lockToPortrait()
     this._getData()
   }
@@ -28,7 +29,7 @@ export default class DetailAnime extends Component {
       return(
         <View>
           <Anime data = {this.props.anime} />
-          <Capitulos  list = {this.state.capitulos} />
+          <Capitulos  list = {this.state.capitulos} anime = {this.props.anime} />
         </View>
       )
     } else {

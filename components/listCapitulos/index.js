@@ -19,8 +19,11 @@ export default class ListCapitulos extends Component {
     }
     this._handleClick = this._handleClick.bind(this)
   }
+
+
   _handleClick(data) {
-    Actions.Reproductor({capitulo: data})
+    let {anime} = this.props
+    Actions.Reproductor({capitulo: data, anime: anime})
   }
 
   render (){

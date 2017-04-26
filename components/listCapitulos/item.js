@@ -16,7 +16,7 @@ export default class Capitulo extends Component {
     return(
       <View style = {styles.main}>
         <Text style = {styles.text}>
-          {capitulo.id} - Episodio
+          {capitulo.name}
          </Text>
        <Icons style = {styles.iconPlay} name = "md-play" color = "#B70D00" size={20} />
       </View>
