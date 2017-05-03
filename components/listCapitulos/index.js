@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import {
+  View,
   ListView,
   StyleSheet,
   TouchableOpacity,
   TouchableNativeFeedback,
-  View,
 } from 'react-native'
 
 import {Actions} from 'react-native-router-flux'
@@ -20,6 +20,11 @@ export default class ListCapitulos extends Component {
     this._handleClick = this._handleClick.bind(this)
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.list !== this.props.list) {
+      this.setState({ dataSource: this.state.dataSource.cloneWithRows(nextProps.list)})
+    }
+  }
 
   _handleClick(data) {
     let {anime} = this.props
@@ -29,7 +34,6 @@ export default class ListCapitulos extends Component {
   render (){
       return(
         <View style = {styles.main}>
-          <View style = {styles.color}/>
           <ListView
             style = {styles.list}
             enableEmptySections={true}
@@ -49,6 +53,7 @@ export default class ListCapitulos extends Component {
 const styles = new StyleSheet.create({
   main: {
     marginTop: 240,
+
   },
   list: {
     margin: 20,

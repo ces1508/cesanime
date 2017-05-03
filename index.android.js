@@ -15,6 +15,7 @@ import {
 import TopAnimes from './views/TopAnimes'
 import DetailAnime from './views/DetailAnime'
 import ReproductorView from './views/Reproductor'
+import SideMenu from './components/sideMenu'
 import {Scene, Router, Actions} from 'react-native-router-flux'
 export default class cesanime extends Component {
 
@@ -22,9 +23,13 @@ export default class cesanime extends Component {
   render() {
     return <Router>
         <Scene  key = "root">
-          <Scene  key = "TopAnime" title = "Top Animes"  component = {TopAnimes}/>
-          <Scene key ="Capitulos" component = {DetailAnime} hideNavBar =  {true} />
-          <Scene key = "Reproductor" component = {ReproductorView}  hideNavBar =  {true} reset />
+           <Scene key = "drawer" component = {SideMenu} open = {false} >
+              <Scene key = "cesanime" >
+                <Scene  key = "TopAnime" title = "Top Animes"  component = {TopAnimes} hideNavBar/>
+                <Scene key ="Capitulos" component = {DetailAnime} hideNavBar =  {true} />
+                <Scene key = "Reproductor" component = {ReproductorView}  hideNavBar =  {true} reset />
+              </Scene>
+           </Scene>
         </Scene>
       </Router>
   }

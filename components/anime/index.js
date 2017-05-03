@@ -15,7 +15,7 @@ export default class AnimeDetail extends Component {
     let anime = this.props.data
     return (
       <View style = {styles.container}>
-        <View style = {styles.containerImage}>
+        <View>
           <Image source = {{uri: anime.thumbnail}} style = {[styles.image]}>
           <Text style = {styles.animeName}> {anime.name} </Text>
           </Image>
@@ -30,7 +30,7 @@ const styles = new StyleSheet.create({
     margin: 0
   },
   image:{
-    height: 280,
+    height: 250,
     position: 'relative',
   },
   animeName: {
@@ -46,7 +46,7 @@ const styles = new StyleSheet.create({
     color: "white",
     fontSize: 20,
     position: "absolute",
-    bottom:30,
-    left: 0
+    bottom:20,
+    textAlign : 'center'
   }
 })

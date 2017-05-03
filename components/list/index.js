@@ -1,23 +1,32 @@
 import React, {Component} from 'react'
 import {
   ListView,
-  TouchableHighlight,
+  TouchableOpacity,
   StyleSheet,
+  View,
 } from 'react-native'
 import  data from '../../dummy.json'
 import Card from "../card/"
-import {Actions} from 'react-native-router-flux'
+import {
+  Actions
+} from 'react-native-router-flux'
+import Bar from '../bar'
 export default class List extends Component{
   constructor (props) {
     super(props)
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-    this._onPressButton = this._onPressButton.bind(this)
+    this.onPressButton = this.onPressButton.bind(this)
     this.state = {
       dataSource: ds.cloneWithRows(this.props.list)
     }
+    this.openMenu = this.openMenu.bind(this)
   }
-  _onPressButton(anime) {
-    Actions.Capitulos({anime})
+  onPressButton(anime) {
+    Actions.Capitulos({ anime })
+  }
+
+  openMenu ()  {
+    Actions.refresh({key: 'drawer', open: value => !value });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,25 +34,30 @@ export default class List extends Component{
       this.setState({ dataSource: this.state.dataSource.cloneWithRows(nextProps.list)})
     }
   }
+
   render() {
     return(
-      <ListView
-        style = {styles.main}
-        dataSource = {this.state.dataSource}
-        enableEmptySections={true}
-        renderRow = { data => (
-          <TouchableHighlight onPress = { () =>  this._onPressButton(data) }>
-             <Card name = {data.name} thumbnail = {data.thumbnail} key = {data.id} author = {data.author} cantEpisodes = {data.cantEpisodes} />
-          </TouchableHighlight>
-        )}
-      />
+      <View style = {styles.container}>
+        <Bar title = 'Top Animes'  icon = "md-menu" handleClick = { this.openMenu} backgroundColor = "#FF0000"/>
+        <ListView
+          style = {styles.main}
+          dataSource = {this.state.dataSource}
+          enableEmptySections={true}
+          renderRow = { data => (
+            <TouchableOpacity onPress = { () =>  this.onPressButton(data) }>
+              <Card name = {data.name} thumbnail = {data.thumbnail} key = {data.id} author = {data.author} cantEpisodes = {data.cantEpisodes} />
+            </TouchableOpacity>
+          )}
+        />
+      </View>
     )
   }
+
 }
 
 const styles = StyleSheet.create({
   main: {
+    backgroundColor: "#D8D8D8",
     marginTop: 55,
-    backgroundColor: "#D8D8D8"
-  }
+  },
 })

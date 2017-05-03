@@ -24,6 +24,7 @@ export default class Reproductor extends Component {
       watching: true,
       currentTime: 0,
       duration: 0,
+      bar: true,
       controlsVisible: false,
       fullScreen: false
     }
@@ -84,19 +85,19 @@ export default class Reproductor extends Component {
       this.controlTimeOut = null
     }
     this.controlTimeOut = setTimeout(() => {
-      this.setState({controlsVisible: false})
+      this.setState({controlsVisible: false, bar: false})
     }, 3000)
   }
 
   showControls() {
-    this.setState({ controlsVisible: true })
+    this.setState({ controlsVisible: true, bar: true })
     this.hideControls()
   }
 
   renderBarTitle() {
-    let {controlsVisible} = this.state
+    let {bar} = this.state
     let {name} = this.props.capitulo
-    let style = controlsVisible ? styles.containerBartitle: {height: 0}
+    let style = bar ? styles.containerBartitle: {height: 0}
     return (
       <View style = {style} >
         <View style = {styles.titleBar}>
@@ -197,6 +198,7 @@ export default class Reproductor extends Component {
   iconPlay () {
     return(
       <View style = {styles.containerIconPlay}>
+        {this.renderBarTitle()}
         <View style = {styles.startPlay}>
           <Icons.Button  iconStyle = {{paddingLeft: 10}} backgroundColor = "rgba(0, 0, 0, 0)" color= "#fff" name = "ios-play" size = {100}  onPress = {this._startVideo} />
         </View>
