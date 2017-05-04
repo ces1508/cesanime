@@ -5,7 +5,6 @@ import {
   StyleSheet,
   View,
 } from 'react-native'
-import  data from '../../dummy.json'
 import Card from "../card/"
 import {
   Actions

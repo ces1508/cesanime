@@ -16,10 +16,10 @@ export default class NavigationDrawer extends Component {
         onClose = { () => Actions.refresh({key: state.key, open: false}) }
         type = "displace"
         content = {<SideMenu />}
-        openDrawerOffset = {0.2}
+        openDrawerOffset = {0.21}
         tapToClose={true}
-        panCloseMask = {0.2}
-        negotiatePan = {true}
+        panCloseMask = {0.3}
+        negotiatePan = {false}
         tweenHandler = { (ratio) => ({ main: {opacity: Math.max(0.54, 1 - ratio)} } )}
       >
        <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate}/>

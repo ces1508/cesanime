@@ -37,7 +37,7 @@ export default class Bar extends Component {
 const  styles = new StyleSheet.create({
   main: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     height: 55,
     position: 'absolute',
@@ -55,7 +55,7 @@ const  styles = new StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: -20,
+    marginLeft: -25,
   },
   text: {
     color: "white",

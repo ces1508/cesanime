@@ -1,4 +1,4 @@
-const baseUrl = 'http://192.168.0.6:3000'
+const baseUrl = 'http://192.168.0.9:3000'
 export default Api = {
   getCapitulos: async (animeId) => {
     try {
